@@ -91,10 +91,10 @@
 #define ILI9341_SCREEN_WIDTH 	320
 
 #define GPIO_TYPE  GPIOB
-#define LED      9
-#define LCD_CS   12
-#define LCD_RS   10
-#define LCD_RST  11
+#define LED      GPIO_PIN_9
+#define LCD_CS   GPIO_PIN_12
+#define LCD_RS   GPIO_PIN_10
+#define LCD_RST  GPIO_PIN_11
 
 //SPI INSTANCE
 #define HSPI_INSTANCE							&hspi2

@@ -127,22 +127,38 @@ int main(void)
 
 
   //__HAL_RCC_GPIOC_CLK_ENABLE();
-  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET);
-  GPIO_InitTypeDef GPIO_InitStruct1 = {0};
-  GPIO_InitStruct1.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct1.Pull = GPIO_NOPULL;
-  GPIO_InitStruct1.Speed = GPIO_SPEED_FREQ_LOW;
-  GPIO_InitStruct1.Pin = GPIO_PIN_13;
+  {
+	  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET);
+	  GPIO_InitTypeDef GPIO_InitStruct1 = {0};
+	  GPIO_InitStruct1.Mode = GPIO_MODE_OUTPUT_PP;
+	  GPIO_InitStruct1.Pull = GPIO_NOPULL;
+	  GPIO_InitStruct1.Speed = GPIO_SPEED_FREQ_LOW;
+	  GPIO_InitStruct1.Pin = GPIO_PIN_13;
 
-  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct1);
+	  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct1);
+  }
 
-  HAL_Delay(100);
-  HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-  HAL_Delay(100);
-  HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-  HAL_Delay(100);
+//  {
+//	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_10, GPIO_PIN_RESET);
+//	  GPIO_InitTypeDef GPIO_InitStruct1 = {0};
+//	  GPIO_InitStruct1.Mode = GPIO_MODE_OUTPUT_PP;
+//	  GPIO_InitStruct1.Pull = GPIO_NOPULL;
+//	  GPIO_InitStruct1.Speed = GPIO_SPEED_FREQ_HIGH;
+//	  GPIO_InitStruct1.Pin = GPIO_PIN_10;
+//
+//	  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct1);
+//  }
 
-  //ILI9341_Init();//initial driver setup to drive ili9341
+
+//  HAL_Delay(100);
+//  HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+//  HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_10);
+//  HAL_Delay(100);
+//  HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+//  HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_10);
+//  HAL_Delay(100);
+
+  ILI9341_Init();//initial driver setup to drive ili9341
 //  LCD_Init();
 
   HAL_Delay(1000);
@@ -165,16 +181,16 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   int i = 0;
-  HAL_GPIO_WritePin(LCD_CS_PORT, LCD_CS_PIN, GPIO_PIN_RESET);
-  HAL_GPIO_WritePin(LCD_DC_PORT, LCD_DC_PIN, GPIO_PIN_RESET);
+//  HAL_GPIO_WritePin(LCD_CS_PORT, LCD_CS_PIN, GPIO_PIN_RESET);
+//  HAL_GPIO_WritePin(LCD_DC_PORT, LCD_DC_PIN, GPIO_PIN_RESET);
 
   while (1)
-  {
-	  HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-	  HAL_GPIO_TogglePin(LCD_DC_PORT, LCD_DC_PIN);
-	  HAL_Delay(1000);
-  }
-
+//  {
+//	  //HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+//	ILI9341_Fill_Screen(WHITE);
+//	ILI9341_Fill_Screen(BLACK);
+//  }
+//
 
 
   {
