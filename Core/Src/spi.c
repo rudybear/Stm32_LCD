@@ -40,9 +40,12 @@ void MX_SPI2_Init(void)
   hspi2.Init.NSS = SPI_NSS_SOFT;
   hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
   hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
-//  hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
-//  hspi2.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+  hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
+  hspi2.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
   hspi2.Init.CRCPolynomial = 7;
+//  hspi2.Init.CRCLength = SPI_CRC_LENGTH_DATASIZE;
+//  hspi2.Init.NSSPMode = SPI_NSS_PULSE_DISABLE;
+
   if (HAL_SPI_Init(&hspi2) != HAL_OK)
   {
     Error_Handler();
@@ -75,16 +78,18 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle)
     PB14     ------> SPI2_MISO
     PB15     ------> SPI2_MOSI 
     */
-    GPIO_InitStruct.Pin = GPIO_PIN_13|GPIO_PIN_15;
+    GPIO_InitStruct.Pin = GPIO_PIN_13|GPIO_PIN_15|GPIO_PIN_14;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
-    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
-    GPIO_InitStruct.Pin = GPIO_PIN_14;
-    GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+    //GPIO_InitStruct.Alternate;// = GPIO_MODE_AF2_SPI2;
     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+//    GPIO_InitStruct.Pin = GPIO_PIN_14;
+//    GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+//    GPIO_InitStruct.Pull = GPIO_NOPULL;
+//    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+//    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 //    GPIO_InitStruct.Pin = GPIO_PIN_12;
 //    GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
